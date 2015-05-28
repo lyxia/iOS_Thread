@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>download</key>
+		<string>82万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/free-apps/images/2015/5/9d695a9d-3794-662a-089a-0c34f0968de0pr_source_2x.png</string>
+		<key>name</key>
+		<string>奇迹暖暖</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>8891万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/free-apps/images/2015/5/690a93d3-5657-98d2-e86f-22a474c60fafmzl.oimaxdjl_2x.png</string>
+		<key>name</key>
+		<string>微信</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>9989万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/free-apps/images/2015/5/b5bec833-1dc9-19f9-7943-5f5ff95c1b68mzl.tydhplxw_2x.png</string>
+		<key>name</key>
+		<string>支付宝钱包（Zhifubao Qia...</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>1822万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/free-apps/images/2015/5/f650b72d-1878-574e-da5b-8313436578bamzl.trpdmpxh_2x.png</string>
+		<key>name</key>
+		<string>QQ</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>2211万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/free-apps/images/2015/5/5666ce5a-ccc0-3f52-d9ed-ee630ff390dbmzl.podpikbz_2x.png</string>
+		<key>name</key>
+		<string>淘宝 - Taobao for iP...</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>192万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/paid-apps/images/2015/5/ab16c4c3-5e99-944a-1fd5-506b7a265548mzl.obclgwxs_2x.png</string>
+		<key>name</key>
+		<string>Shadowmatic</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>211万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/paid-apps/images/2015/5/c7af54d2-ea12-3f71-83a4-257be72d98c3mzl.llnaekwf_2x.png</string>
+		<key>name</key>
+		<string>Enlight</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>11万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/paid-apps/images/2015/5/ac0a0527-cb75-6e78-b2a5-65c3317ba8b2mzl.zfzhnkpr_2x.png</string>
+		<key>name</key>
+		<string>Alto&apos;s Adventure</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>33万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/paid-apps/images/2015/5/00a6bf82-9ce6-a602-794e-d9e8efdeb291pr_source_2x.png</string>
+		<key>name</key>
+		<string>FRAMED</string>
+	</dict>
+	<dict>
+		<key>download</key>
+		<string>11万</string>
+		<key>icon</key>
+		<string>http://images.apple.com/autopush/cn/itunes/charts/paid-apps/images/2015/5/eb46d66b-b6c8-624f-0f8e-950cc814e813mzl.jnjnlmkn_2x.png</string>
+		<key>name</key>
+		<string>纪念碑谷</string>
+	</dict>
+</array>
+</plist>
