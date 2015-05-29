@@ -9,12 +9,12 @@
 ---------
 
 ###阻塞主线程  
-**<font color='0xff000000'>BlockThread</font>**  
+[BlockThread](https://github.com/lyxia/iOS_Thread/tree/master/BlockThread)
 	
 	将比较耗时的操作放在主线程
 	
 ###创建线程
-**<font color='0xff000000'>CreateThread</font>**  
+[CreateThread](https://github.com/lyxia/iOS_Thread/tree/master/CreateThread)  
 使用原始方法创建并执行：
 		
 	pthread_t thread;
@@ -33,7 +33,7 @@
 	[self performSelectorInBackground:@selector(run:) withObject:@"隐式创建"];
 		
 ###线程安全
-**<font color='0xff000000'>ThreadSafa</font>**  
+[ThreadSafa](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSafa)  
 当多个线程写同一块资源时，引发数据错乱和数据安全的问题
 		
 	//加锁
@@ -52,14 +52,14 @@ atomic加锁原理：
 	}
 		
 ###线程通信
-**<font color='0xff000000'>ThreadSignal</font>**  
+[ThreadSignal](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSignal)  
 线程间通信常用方法
 		
 	- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUtilDone:(BOOL)wait;
 	- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUtilDone:(BOOL)wait;
 		
 ###GCD的初步认识
-**<font color='0xff000000'>GCDStart</font>**  
+[GCDStart](https://github.com/lyxia/iOS_Thread/tree/master/GCDStart)  
 创建串行队列
 		
 	//使用dispatch_queue_create函数创建串行队列
@@ -95,10 +95,10 @@ atomic加锁原理：
 	
 >> 串行队列：开一条线程
 	
->> 主队列：不开线程（主队列里的任务一定在主线程中执行）**<font color='0xff000000'>MainQueue</font>**
+>> 主队列：不开线程（主队列里的任务一定在主线程中执行）[MainQueue](https://github.com/lyxia/iOS_Thread/tree/master/MainQueue)
 	
 ###线程状态
-**<font color='0xff000000'>ThreadState</font>**  
+[ThreadState](https://github.com/lyxia/iOS_Thread/tree/master/ThreadState)  
 > 就绪：cpu正在调用其他线程
 	
 > 运行：cpu调用当前线程
@@ -117,7 +117,7 @@ atomic加锁原理：
 	[NSThread exit]
 		
 ###延迟执行、一次性代码、队列组
-**<font color='0xff000000'>DelayCall，OnceCall，QueueGroup</font>**  
+[DelayCall](https://github.com/lyxia/iOS_Thread/tree/master/DelayCall)  
 延迟执行：
 		
 	//第一种
@@ -127,6 +127,7 @@ atomic加锁原理：
     // 2秒后异步执行这里的代码...
 	});
 		
+[OnceCall](https://github.com/lyxia/iOS_Thread/tree/master/OnceCall)  
 一次性代码：
 		
 	static dispatch_once_t onceToken;
@@ -134,6 +135,7 @@ atomic加锁原理：
     	// 只执行1次的代码(这里面默认是线程安全的)
 	});
 		
+[QueueGroup](https://github.com/lyxia/iOS_Thread/tree/master/QueueGroup)  
 队列组：
 		
 	//1、创建一个组
@@ -145,7 +147,7 @@ atomic加锁原理：
 	dispatch_group_notify(group, dispatch_get_main_queue(), ^{//等两张图都下载完成，回到主线程执行});
 		
 ###NSOperation的初步认识
-**<font color='0xff000000'>NSOperationStart</font>**  
+[NSOperationStart](https://github.com/lyxia/iOS_Thread/tree/master/NSOperationStart)  
 > 操作：NSOperation（抽象类）的子类：  
 
 >> NSInvocationOperation
@@ -163,7 +165,7 @@ atomic加锁原理：
 > NSOperation: -(void)start; //操作对象默认在主线程中执行，只有添加到队列中才会开启新的线程
 
 ###NSOperation的基本操作
-**<font color='0xff000000'>NSOperationBaseOpr</font>**  
+[NSOperationBaseOpr](https://github.com/lyxia/iOS_Thread/tree/master/NSOperationBaseOpr)  
 并发数：
 	
 	- (NSInteger)maxConcurrentOperationCount;
@@ -196,11 +198,13 @@ atomic加锁原理：
 	- (void)setCompletionBlock:(void (^)(void))block; 
 
 ###自定义NSOperation
-**<font color='0xff000000'>NSOperationBaseOpr</font>**  
+[NSOperationCustomize](https://github.com/lyxia/iOS_Thread/tree/master/NSOperationCustomize)  
 实现异步加载多张图片  
-加载没完成的占位图： 
+加载没完成的占位图：  
 ![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadDefaultImage.png) 
+
 加载完成后的效果：  
 ![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadCompeleted.png)
+
 log：  
 ![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/Log.png)
