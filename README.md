@@ -14,17 +14,17 @@
 ```obj-c
 将比较耗时的操作放在主线程
 ```
-
-###建线程
-[CrateThread](https://github.com/lyxia/iOS_Thread/tree/master/CreateThread)  
-使原始方法创建并执行：
 	
+###创建线程
+[CreateThread](https://github.com/lyxia/iOS_Thread/tree/master/CreateThread)  
+使用原始方法创建并执行：
+		
 ```obj-c
 pthread_t thread;
 pthread_create(&pthread, NULL, run, NULL);```
-	
-使用SThread创建线程并执行：
-	
+		
+使用NSThread创建线程并执行：
+		
 ```obj-c
 //需要手动开启
 NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run:) object:@"线程"];
@@ -32,26 +32,26 @@ NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run:
 //自动开启
 NSThread *thread1 = [[NSThread alloc] detachNewThreadSelector:@selector(run:) toTarget:self withObject:@"自动"];
 ```
-
-使用erformSelectorInBackground：
 	
+使用performSelectorInBackground：
+		
 ```obj-c
 [self performSelectorInBackground:@selector(run:) withObject:@"隐式创建"];
 ```
-	
-###程安全
-[TheadSafa](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSafa)  
-当个线程写同一块资源时，引发数据错乱和数据安全的问题
-	
+		
+###线程安全
+[ThreadSafa](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSafa)  
+当多个线程写同一块资源时，引发数据错乱和数据安全的问题
+		
 ```obj-c
 //加锁
 @synchronized(self){//只能加一把锁
 	//加锁的代码
 }
 ```
-	
-atoic加锁原理：
-	
+		
+atomic加锁原理：
+		
 ```obj-c
 @property (assign, atomic) int age;
 - (void)setAge:(int)age
@@ -61,41 +61,44 @@ atoic加锁原理：
 	}
 }
 ```
-	
-###程通信
-[TheadSignal](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSignal)  
-线间通信常用方法
-	
+		
+###线程通信
+[ThreadSignal](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSignal)  
+线程间通信常用方法
+		
+
 ```obj-c
 - (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUtilDone:(BOOL)wait;
 - (void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUtilDone:(BOOL)wait;
 ```	
-###CD的初步认识
-[GCStart](https://github.com/lyxia/iOS_Thread/tree/master/GCDStart)  
-创串行队列
-	
+
+###GCD的初步认识
+[GCDStart](https://github.com/lyxia/iOS_Thread/tree/master/GCDStart)  
+创建串行队列
+		
 ```obj-c
 //使用dispatch_queue_create函数创建串行队列
-dispatch_queue_t queue = dispatch_queue_create(const char *label, dispatch_queue_attr_t attr);//队列名字，队列属性一般为NULL
-	//使用主队列
-	dispatch_queue_t queue = dispatch_get_main_queue();
+dispatch_queue_t queue = dispatch_queue_create(const char *label, dispatch_queue_attr_t attr);/队列名字，队列属性一般为NULL
+//使用主队列
+dispatch_queue_t queue = dispatch_get_main_queue();
 		
 创建并行队列
 		
-	//全局的并发队列
-	dispatch_queue_t queue = dispatch_get_global_queue(dispatch_queue_priority_t priority, unsigned long flags);//此参数无用，用0即可```
+//全局的并发队列
+dispatch_queue_t queue = dispatch_get_global_queue(dispatch_queue_priority_t priority, unsigned long flags);/此参数无用，用0即可
+```
 		
 异步执行
 		
-	```obj-c
-	dispatch_async(queue, ^{//任务});
-	```
+```obj-c
+dispatch_async(queue, ^{//任务});
+```
 		
 同步执行
 		
-	```obj-c
-	dispatch_sync(queue, ^{//任务});
-	```
+```obj-c
+dispatch_sync(queue, ^{//任务});
+```
 		
 **总结**  
 > 同步函数
@@ -121,7 +124,7 @@ dispatch_queue_t queue = dispatch_queue_create(const char *label, dispatch_queue
 > 运行：cpu调用当前线程
 	
 > 阻塞：线程被移出可调度线程池，此时不可调度
-		
+			
 	```obj-c
 	//阻塞的两种方法
 	//第一种
@@ -129,45 +132,47 @@ dispatch_queue_t queue = dispatch_queue_create(const char *label, dispatch_queue
 	//第二种 以当前时间为基准阻塞
 	NSDate *date = [NSDate dateWithTimeIntervalSinceNow:2.0];
 	[NSThread sleepUntilDate:date];
-```	
+	```	
 > 死亡：当线程的任务结束，发生异常，或者是强制退出这三种情况会导致线程的死亡。移出内存
 		
+	```obj-c	
 	[NSThread exit]
+	```
 		
 ###延迟执行、一次性代码、队列组
 [DelayCall](https://github.com/lyxia/iOS_Thread/tree/master/DelayCall)  
 延迟执行：
 		
-	```obj-c
-	//第一种
-	[self performSelector:@selector(run) withObject:nil afterDelay:2.0];
-	//第二种
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    // 2秒后异步执行这里的代码...
-	});
-	```
+```obj-c
+//第一种
+[self performSelector:@selector(run) withObject:nil afterDelay:2.0];
+//第二种
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+   // 2秒后异步执行这里的代码...
+});
+```
 		
 [OnceCall](https://github.com/lyxia/iOS_Thread/tree/master/OnceCall)  
 一次性代码：
 		
-	```obj-c
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-    	// 只执行1次的代码(这里面默认是线程安全的)
-	});
-	```
+```obj-c
+static dispatch_once_t onceToken;
+dispatch_once(&onceToken, ^{
+   	// 只执行1次的代码(这里面默认是线程安全的)
+});
+```
 		
 [QueueGroup](https://github.com/lyxia/iOS_Thread/tree/master/QueueGroup)  
 队列组：
 		
-	```obj-c
-	//1、创建一个组
-	dispatch_group_t group = dispatch_group_create();
-	//2、两张图同时下载
-	dispatch_group_async(group, queue, ^{//下载第一张图});
-	dispatch_group_async(group, queue, ^{//下载第二张图});
-	//3、通知
-	dispatch_group_notify(group, dispatch_get_main_queue(), ^{//等两张图都下载完成，回到主线程执行});
+```obj-c
+//1、创建一个组
+dispatch_group_t group = dispatch_group_create();
+//2、两张图同时下载
+dispatch_group_async(group, queue, ^{//下载第一张图});
+dispatch_group_async(group, queue, ^{//下载第二张图});
+//3、通知
+dispatch_group_notify(group, dispatch_get_main_queue(), ^{//等两张图都下载完成，回到主线程执行});
 ```		
 ###NSOperation的初步认识
 [NSOperationStart](https://github.com/lyxia/iOS_Thread/tree/master/NSOperationStart)  
@@ -191,43 +196,43 @@ dispatch_queue_t queue = dispatch_queue_create(const char *label, dispatch_queue
 [NSOperationBaseOpr](https://github.com/lyxia/iOS_Thread/tree/master/NSOperationBaseOpr)  
 并发数：
 	
-	```obj-c
-	- (NSInteger)maxConcurrentOperationCount;
-	- (void)setMaxConcurrentOperationCount:(NSInteger)cnt; 
-	```
+```obj-c
+- (NSInteger)maxConcurrentOperationCount;
+- (void)setMaxConcurrentOperationCount:(NSInteger)cnt; 
+```
 	
 队列的取消，暂停和恢复：
 	
-	```obj-c
-	- (void)cancelAllOperations;
-	- (void)setSuspended:(BOOL)b; // YES代表暂停队列,NO代表恢复队列
-	- (BOOL)isSuspended; //当前状态
-	```
+```obj-c
+- (void)cancelAllOperations;
+- (void)setSuspended:(BOOL)b; // YES代表暂停队列,NO代表恢复队列
+- (BOOL)isSuspended; //当前状态
+```
 
 操作优先级：(说明：优先级高的任务，调用的几率会更大。)
 	
-	```obj-c
-	- (NSOperationQueuePriority)queuePriority;
-	- (void)setQueuePriority:(NSOperationQueuePriority)p;
-	//优先级的取值
-	//NSOperationQueuePriorityVeryLow = -8L,
-	//NSOperationQueuePriorityLow = -4L,
-	//NSOperationQueuePriorityNormal = 0,
-	//NSOperationQueuePriorityHigh = 4,
-	//NSOperationQueuePriorityVeryHigh = 8 
-	```
+```obj-c
+- (NSOperationQueuePriority)queuePriority;
+- (void)setQueuePriority:(NSOperationQueuePriority)p;
+//优先级的取值
+//NSOperationQueuePriorityVeryLow = -8L,
+//NSOperationQueuePriorityLow = -4L,
+//NSOperationQueuePriorityNormal = 0,
+//NSOperationQueuePriorityHigh = 4,
+//NSOperationQueuePriorityVeryHigh = 8 
+```
 
 操作依赖：（NSOperation之间可以设置依赖来保证执行顺序，⽐如一定要让操作A执行完后,才能执行操作B,可以在不同queue的NSOperation之间创建依赖关系）
 	
-	```obj-c
-	[operationB addDependency:operationA]; // 操作B依赖于操作A
-	```	
+```obj-c
+[operationB addDependency:operationA]; // 操作B依赖于操作A
+```	
 操作的监听：
 	
-	```obj-c
-	- (void (^)(void))completionBlock;
-	- (void)setCompletionBlock:(void (^)(void))block; 
-	```
+```obj-c
+- (void (^)(void))completionBlock;
+- (void)setCompletionBlock:(void (^)(void))block; 
+```
 
 ###自定义NSOperation
 [NSOperationCustomize](https://github.com/lyxia/iOS_Thread/tree/master/NSOperationCustomize)  
