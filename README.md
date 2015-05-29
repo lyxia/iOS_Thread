@@ -3,6 +3,11 @@
 
 ---------
 
+学习文章：  
+[文顶顶 多线程篇](http://www.cnblogs.com/wendingding/tag/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%AF%87/)
+
+---------
+
 ###阻塞主线程  
 **<font color='0xff000000'>BlockThread</font>**  
 	
