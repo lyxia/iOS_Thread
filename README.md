@@ -5,6 +5,7 @@
 
 ###iOS多线程的学习
 
+
 * ####阻塞主线程  
 	**<font color='0xff000000'>BlockThread</font>**  
 	将比较耗时的操作放在主线程
@@ -140,9 +141,3 @@
 		dispatch_group_notify(group, dispatch_get_main_queue(), ^{//等两张图都下载完成，回到主线程执行});
 		
 * ####NSOperation
-	 
-=======
-# iOS_Thread
-iOS多线程学习
-test
->>>>>>> 2863c8d4b71621b3171c49e0edf50fefd0a85ed1
