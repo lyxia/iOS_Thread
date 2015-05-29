@@ -11,73 +11,72 @@
 ###阻塞主线程  
 [BlockThread](https://github.com/lyxia/iOS_Thread/tree/master/BlockThread)
 	
-	```obj-c
-	将比较耗时的操作放在主线程
-	```
-	
-###创建线程
-[CreateThread](https://github.com/lyxia/iOS_Thread/tree/master/CreateThread)  
-使用原始方法创建并执行：
-		
-	```obj-c
-	pthread_t thread;
-	pthread_create(&pthread, NULL, run, NULL);```
-		
-使用NSThread创建线程并执行：
-		
-	```obj-c
-	//需要手动开启
-	NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run:) object:@"线程"];
-	[thread start];
-	//自动开启
-	NSThread *thread1 = [[NSThread alloc] detachNewThreadSelector:@selector(run:) toTarget:self withObject:@"自动"];
-	```
-	
-使用performSelectorInBackground：
-		
-	```obj-c
-	[self performSelectorInBackground:@selector(run:) withObject:@"隐式创建"];
-	```
-		
-###线程安全
-[ThreadSafa](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSafa)  
-当多个线程写同一块资源时，引发数据错乱和数据安全的问题
-		
-	```obj-c
-	//加锁
-	@synchronized(self){//只能加一把锁
-		//加锁的代码
-	}
-	```
-		
-atomic加锁原理：
-		
-	```obj-c
-	@property (assign, atomic) int age;
-	- (void)setAge:(int)age
-	{
-		@synchronized(self){			
-			_age = age;
-		}
-	}
-	```
-		
-###线程通信
-[ThreadSignal](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSignal)  
-线程间通信常用方法
-		
+```obj-c
+将比较耗时的操作放在主线程
+```
 
-	```obj-c
-	- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUtilDone:(BOOL)wait;
-	- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUtilDone:(BOOL)wait;
-	```	
-###GCD的初步认识
-[GCDStart](https://github.com/lyxia/iOS_Thread/tree/master/GCDStart)  
-创建串行队列
-		
-	```obj-c
-	//使用dispatch_queue_create函数创建串行队列
-	dispatch_queue_t queue = dispatch_queue_create(const char *label, dispatch_queue_attr_t attr);//队列名字，队列属性一般为NULL
+###建线程
+[CrateThread](https://github.com/lyxia/iOS_Thread/tree/master/CreateThread)  
+使原始方法创建并执行：
+	
+```obj-c
+pthread_t thread;
+pthread_create(&pthread, NULL, run, NULL);```
+	
+使用SThread创建线程并执行：
+	
+```obj-c
+//需要手动开启
+NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run:) object:@"线程"];
+[thread start];
+//自动开启
+NSThread *thread1 = [[NSThread alloc] detachNewThreadSelector:@selector(run:) toTarget:self withObject:@"自动"];
+```
+
+使用erformSelectorInBackground：
+	
+```obj-c
+[self performSelectorInBackground:@selector(run:) withObject:@"隐式创建"];
+```
+	
+###程安全
+[TheadSafa](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSafa)  
+当个线程写同一块资源时，引发数据错乱和数据安全的问题
+	
+```obj-c
+//加锁
+@synchronized(self){//只能加一把锁
+	//加锁的代码
+}
+```
+	
+atoic加锁原理：
+	
+```obj-c
+@property (assign, atomic) int age;
+- (void)setAge:(int)age
+{
+	@synchronized(self){			
+		_age = age;
+	}
+}
+```
+	
+###程通信
+[TheadSignal](https://github.com/lyxia/iOS_Thread/tree/master/ThreadSignal)  
+线间通信常用方法
+	
+```obj-c
+- (void)performSelectorOnMainThread:(SEL)aSelector withObject:(id)arg waitUtilDone:(BOOL)wait;
+- (void)performSelector:(SEL)aSelector onThread:(NSThread *)thr withObject:(id)arg waitUtilDone:(BOOL)wait;
+```	
+###CD的初步认识
+[GCStart](https://github.com/lyxia/iOS_Thread/tree/master/GCDStart)  
+创串行队列
+	
+```obj-c
+//使用dispatch_queue_create函数创建串行队列
+dispatch_queue_t queue = dispatch_queue_create(const char *label, dispatch_queue_attr_t attr);//队列名字，队列属性一般为NULL
 	//使用主队列
 	dispatch_queue_t queue = dispatch_get_main_queue();
 		
