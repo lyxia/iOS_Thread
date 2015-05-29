@@ -125,19 +125,20 @@ dispatch_sync(queue, ^{//任务});
 	
 > 阻塞：线程被移出可调度线程池，此时不可调度
 			
-	```obj-c
-	//阻塞的两种方法
-	//第一种
-	[NSThread sleepForTimeInterval:2.0];
-	//第二种 以当前时间为基准阻塞
-	NSDate *date = [NSDate dateWithTimeIntervalSinceNow:2.0];
-	[NSThread sleepUntilDate:date];
-	```	
+```obj-c
+//阻塞的两种方法
+//第一种
+[NSThread sleepForTimeInterval:2.0];
+//第二种 以当前时间为基准阻塞
+NSDate *date = [NSDate dateWithTimeIntervalSinceNow:2.0];
+[NSThread sleepUntilDate:date];
+```	
+
 > 死亡：当线程的任务结束，发生异常，或者是强制退出这三种情况会导致线程的死亡。移出内存
 		
-	```obj-c	
-	[NSThread exit]
-	```
+```obj-c	
+[NSThread exit]
+```
 		
 ###延迟执行、一次性代码、队列组
 [DelayCall](https://github.com/lyxia/iOS_Thread/tree/master/DelayCall)  
