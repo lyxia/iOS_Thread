@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7239B2B9-1DEB-4067-BA2F-9632553A6386</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NSOperationCustomize</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D7E98108DC9B7306517931644C4017D14B8A9FDB</key>
+		<string>github.com:lyxia/iOS_Thread.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>NSOperationCustomize/NSOperationCustomize.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D7E98108DC9B7306517931644C4017D14B8A9FDB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:lyxia/iOS_Thread.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D7E98108DC9B7306517931644C4017D14B8A9FDB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D7E98108DC9B7306517931644C4017D14B8A9FDB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

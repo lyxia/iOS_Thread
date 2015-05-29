@@ -139,4 +139,63 @@ atomic加锁原理：
 	//3、通知
 	dispatch_group_notify(group, dispatch_get_main_queue(), ^{//等两张图都下载完成，回到主线程执行});
 		
-###NSOperation
+###NSOperation的初步认识
+**<font color='0xff000000'>NSOperationStart</font>**  
+> 操作：NSOperation（抽象类）的子类：  
+
+>> NSInvocationOperation
+
+>> NSBlockOperation
+
+>>> addExecutionBlock添加操作（可以添加多个操作,与外部的操作等价）
+
+>> 自定义子类继承NSOperation,实现内部相应的⽅法(main方法)
+
+> NSOperationQueue
+
+>> 将NSOperation对象添加到NSOperationQueue中,系统会⾃动将NSOperationQueue中的NSOperation取出来,将取出的NSOperation封装的操作放到⼀条新线程中执⾏	
+
+> NSOperation: -(void)start; //操作对象默认在主线程中执行，只有添加到队列中才会开启新的线程
+
+###NSOperation的基本操作
+**<font color='0xff000000'>NSOperationBaseOpr</font>**  
+并发数：
+	
+	- (NSInteger)maxConcurrentOperationCount;
+	- (void)setMaxConcurrentOperationCount:(NSInteger)cnt; 
+	
+队列的取消，暂停和恢复：
+	
+	- (void)cancelAllOperations;
+	- (void)setSuspended:(BOOL)b; // YES代表暂停队列,NO代表恢复队列
+	- (BOOL)isSuspended; //当前状态
+
+操作优先级：(说明：优先级高的任务，调用的几率会更大。)
+	
+	- (NSOperationQueuePriority)queuePriority;
+	- (void)setQueuePriority:(NSOperationQueuePriority)p;
+	//优先级的取值
+	//NSOperationQueuePriorityVeryLow = -8L,
+	//NSOperationQueuePriorityLow = -4L,
+	//NSOperationQueuePriorityNormal = 0,
+	//NSOperationQueuePriorityHigh = 4,
+	//NSOperationQueuePriorityVeryHigh = 8 
+
+操作依赖：（NSOperation之间可以设置依赖来保证执行顺序，⽐如一定要让操作A执行完后,才能执行操作B,可以在不同queue的NSOperation之间创建依赖关系）
+	
+	[operationB addDependency:operationA]; // 操作B依赖于操作A
+	
+操作的监听：
+	
+	- (void (^)(void))completionBlock;
+	- (void)setCompletionBlock:(void (^)(void))block; 
+
+###自定义NSOperation
+**<font color='0xff000000'>NSOperationBaseOpr</font>**  
+实现异步加载多张图片  
+加载没完成的占位图：  
+![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadCompeleted.png)
+加载完成后的效果：  
+![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadDefaultImage.png)
+log：  
+![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/Log.png)
