@@ -193,9 +193,9 @@ atomic加锁原理：
 ###自定义NSOperation
 **<font color='0xff000000'>NSOperationBaseOpr</font>**  
 实现异步加载多张图片  
-加载没完成的占位图：  
-![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadCompeleted.png)
+加载没完成的占位图： 
+![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadDefaultImage.png) 
 加载完成后的效果：  
-![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadDefaultImage.png)
+![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/loadCompeleted.png)
 log：  
 ![image](https://github.com/lyxia/iOS_Thread/blob/master/NSOperationCustomize/ScreenShot/Log.png)
