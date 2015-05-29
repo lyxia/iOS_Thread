@@ -28,7 +28,8 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self operation3];
+//    [self operation3];
+    [self performSelectorOnMainThread:@selector(test1) withObject:nil waitUntilDone:NO];
 }
 
 /**
